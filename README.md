@@ -1,88 +1,79 @@
-📊 SQL Sales Analysis Project
-🔹 Project Overview
+# 📊 SQL Sales Analysis Project
 
-This project analyzes sales data using SQL to extract meaningful business insights.
-The analysis covers customer behavior, product performance, and revenue trends using relational database concepts.
+## 🔹 Project Overview
+This project focuses on analyzing sales data using SQL to derive meaningful business insights.  
+It demonstrates how raw transactional data can be transformed into analytical outputs that support business decision-making.
 
-The goal of this project is to demonstrate intermediate SQL skills relevant to Data Analyst roles.
+The project is designed to showcase **intermediate SQL skills** relevant to **Data Analyst** roles.
 
-🔹 Database Schema
+---
 
-The database consists of three tables:
+## 🔹 Objectives
+- Analyze customer purchasing behavior
+- Identify top-performing products
+- Track revenue trends over time
+- Segment customers based on spending patterns
 
-customers: customer details and city
+---
 
-products: product information and pricing
+## 🔹 Database Schema
+The database consists of three relational tables:
 
-orders: transaction-level sales data
+### 1. Customers
+- Stores customer details and city information
 
-Relationships:
+### 2. Products
+- Contains product names and pricing details
 
-Each order belongs to one customer
+### 3. Orders
+- Records transaction-level sales data including quantity and order date
 
-Each order contains one product
+### Relationships
+- Each order is linked to one customer
+- Each order contains one product
 
-🔹 SQL Concepts Used
+---
 
-SELECT, WHERE, ORDER BY
+## 🔹 SQL Concepts Used
+- `SELECT`, `ORDER BY`
+- `INNER JOIN`
+- Aggregate functions (`SUM`, `COUNT`)
+- `GROUP BY`
+- Conditional logic using `CASE`
+- Date functions (`YEAR`, `MONTH`)
+- Business-oriented data analysis
 
-JOIN (multiple tables)
+---
 
-Aggregate functions (SUM, COUNT)
+## 🔹 Key Analyses Performed
 
-GROUP BY
+### 1️⃣ Total Sales per Order
+Calculated revenue at the individual order level using quantity and product price.
 
-Conditional logic (CASE)
+### 2️⃣ Total Sales per Customer
+Aggregated total spending per customer to identify high-value customers.
 
-Date functions (YEAR, MONTH)
+### 3️⃣ Monthly Revenue Trend
+Analyzed month-wise revenue trends by extracting year and month from order dates.
 
-Business segmentation logic
+### 4️⃣ Top-Selling Products
+Identified products with the highest total sales based on quantity sold.
 
-🔹 Key Business Insights
-1️⃣ Total Sales per Order
+### 5️⃣ Customer Segmentation
+Segmented customers into:
+- **High Spenders**
+- **Medium Spenders**
+- **Low Spenders**
 
-Calculated revenue at the order level using quantity × price, allowing transaction-level revenue analysis.
+This segmentation helps businesses target customers more effectively.
 
-2️⃣ Total Sales per Customer
+---
 
-Identified high-value customers by aggregating total spending across all orders.
+## 🔹 Sample SQL Logic (Customer Segmentation)
 
-3️⃣ Monthly Revenue Trend
-
-Analyzed revenue trends over time by extracting year and month from order dates, enabling time-based performance tracking.
-
-4️⃣ Top-Selling Products
-
-Determined best-performing products by aggregating total quantity sold and ranking them accordingly.
-
-5️⃣ Customer Segmentation
-
-Customers were categorized into:
-
-High Spenders
-
-Medium Spenders
-
-Low Spenders
-
-This helps businesses identify premium customers and target marketing strategies effectively.
-
-🔹 Sample Query (Customer Segmentation)
+```sql
 CASE
-WHEN SUM(Orders.Quantity _ Products.Price) >= 30000 THEN 'High Spenders'
-WHEN SUM(Orders.Quantity _ Products.Price) BETWEEN 10000 AND 29999 THEN 'Medium Spenders'
-ELSE 'Low Spenders'
+  WHEN SUM(Orders.Quantity * Products.Price) >= 30000 THEN 'High Spenders'
+  WHEN SUM(Orders.Quantity * Products.Price) BETWEEN 10000 AND 29999 THEN 'Medium Spenders'
+  ELSE 'Low Spenders'
 END AS Segment
-
-🔹 Tools Used
-
-MySQL
-
-MySQL Workbench
-
-GitHub
-
-🔹 Conclusion
-
-This project demonstrates how raw transactional data can be transformed into actionable business insights using SQL.
-It reflects real-world analytical thinking and intermediate-level SQL proficiency.
