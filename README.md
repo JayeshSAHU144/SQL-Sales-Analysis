@@ -1,88 +1,105 @@
-📊 SQL Sales Analysis Project
-🔹 Project Overview
+# 📊 SQL Sales Analysis Project
 
-This project analyzes sales data using SQL to extract meaningful business insights.
-The analysis covers customer behavior, product performance, and revenue trends using relational database concepts.
+## 🔹 Project Overview
+
+This project focuses on analyzing sales data using SQL to derive meaningful business insights.  
+It demonstrates how raw transactional data can be transformed into analytical outputs that support business decision-making.
 
 The project is designed to showcase **intermediate SQL skills** relevant to **Data Analyst** roles.
 
-🔹 Database Schema
+---
 
-The database consists of three tables:
+## 🔹 Objectives
 
-customers: customer details and city
+- Analyze customer purchasing behavior
+- Identify top-performing products
+- Track revenue trends over time
+- Segment customers based on spending patterns
 
-products: product information and pricing
+---
 
-orders: transaction-level sales data
+## 🔹 Database Schema
 
-Relationships:
+The database consists of three relational tables:
 
-Each order belongs to one customer
+### 1. Customers
 
-Each order contains one product
+- Stores customer details and city information
 
-🔹 SQL Concepts Used
+### 2. Products
 
-SELECT, WHERE, ORDER BY
+- Contains product names and pricing details
 
-JOIN (multiple tables)
+### 3. Orders
 
-Aggregate functions (SUM, COUNT)
+- Records transaction-level sales data including quantity and order date
 
-GROUP BY
+### Relationships
 
-Conditional logic (CASE)
+- Each order is linked to one customer
+- Each order contains one product
 
-Date functions (YEAR, MONTH)
+---
 
-Business segmentation logic
+## 🔹 SQL Concepts Used
 
-🔹 Key Business Insights
-1️⃣ Total Sales per Order
+- `SELECT`, `ORDER BY`
+- `INNER JOIN`
+- Aggregate functions (`SUM`, `COUNT`)
+- `GROUP BY`
+- Conditional logic using `CASE`
+- Date functions (`YEAR`, `MONTH`)
+- Business-oriented data analysis
 
-Calculated revenue at the order level using quantity × price, allowing transaction-level revenue analysis.
+---
 
-2️⃣ Total Sales per Customer
+## 🔹 Key Analyses Performed
 
-Identified high-value customers by aggregating total spending across all orders.
+### 1️⃣ Total Sales per Order
 
-3️⃣ Monthly Revenue Trend
+Calculated revenue at the individual order level using quantity and product price.
 
-Analyzed revenue trends over time by extracting year and month from order dates, enabling time-based performance tracking.
+### 2️⃣ Total Sales per Customer
 
-4️⃣ Top-Selling Products
+Aggregated total spending per customer to identify high-value customers.
 
-Determined best-performing products by aggregating total quantity sold and ranking them accordingly.
+### 3️⃣ Monthly Revenue Trend
 
-5️⃣ Customer Segmentation
+Analyzed month-wise revenue trends by extracting year and month from order dates.
 
-Customers were categorized into:
+### 4️⃣ Top-Selling Products
 
-High Spenders
+Identified products with the highest total sales based on quantity sold.
 
-Medium Spenders
+### 5️⃣ Customer Segmentation
 
-Low Spenders
+Segmented customers into:
 
-This helps businesses identify premium customers and target marketing strategies effectively.
+- **High Spenders**
+- **Medium Spenders**
+- **Low Spenders**
 
-🔹 Sample Query (Customer Segmentation)
+This segmentation helps businesses target customers more effectively.
+
+### 6️⃣ Customer Performance Report
+
+Generated a comprehensive customer performance report including:
+
+- **Total number of orders**
+- **Total quantity purchased**
+- **Total revenue generated**
+- **Customer spending category (High / Medium / Low)**
+
+This analysis combines multiple SQL concepts such as JOINs, aggregation, CASE statements, and GROUP BY to provide a complete customer overview.
+
+---
+
+## 🔹 Sample SQL Logic (Customer Segmentation)
+
+```sql
 CASE
-WHEN SUM(Orders.Quantity _ Products.Price) >= 30000 THEN 'High Spenders'
-WHEN SUM(Orders.Quantity _ Products.Price) BETWEEN 10000 AND 29999 THEN 'Medium Spenders'
-ELSE 'Low Spenders'
+  WHEN SUM(Orders.Quantity * Products.Price) >= 30000 THEN 'High Spenders'
+  WHEN SUM(Orders.Quantity * Products.Price) BETWEEN 10000 AND 29999 THEN 'Medium Spenders'
+  ELSE 'Low Spenders'
 END AS Segment
-
-🔹 Tools Used
-
-MySQL
-
-MySQL Workbench
-
-GitHub
-
-🔹 Conclusion
-
-This project demonstrates how raw transactional data can be transformed into actionable business insights using SQL.
-It reflects real-world analytical thinking and intermediate-level SQL proficiency.
+```
