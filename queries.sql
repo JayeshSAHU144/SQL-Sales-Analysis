@@ -60,3 +60,17 @@ ELSE 'Low Spenders' END AS Category
     JOIN Products ON Products.Product_id = Orders.Product_id
     GROUP BY Customers.Customer_name
     ORDER BY SUM(Orders.Quantity * Products.Price) DESC;
+
+
+-- 9 USing CTE to Segmentation
+WITH Customer_Spend AS 
+    ( SELECT Customers.Customer_name, SUM(Orders.Quantity * Products.Price) as Total_Spend
+        FROM Customers
+        JOIN Orders ON Orders.Customer_id = Customers.Customer_id
+    JOIN Products ON Products.Product_id = Orders.Product_id
+    GROUP BY Customers.Customer_id )
+    SELECT *, CASE WHEN Total_Spend >= 30000 THEN 'High Spender'
+        WHEN Total_Spend BETWEEN 10000 AND 29999 THEN 'Midium Spender'
+        ELSE 'Low spender' END AS Segmentation
+        FROM Customer_spend
+        ORDER BY Total_Spend DESC;
