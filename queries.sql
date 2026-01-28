@@ -74,5 +74,3 @@ WITH Customer_Spend AS
         ELSE 'Low spender' END AS Segmentation
         FROM Customer_spend
         ORDER BY Total_Spend DESC;
-
--- end --
