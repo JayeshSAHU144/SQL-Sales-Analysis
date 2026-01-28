@@ -62,7 +62,7 @@ ELSE 'Low Spenders' END AS Category
     ORDER BY SUM(Orders.Quantity * Products.Price) DESC;
 
 
--- 9 USing CTE to Segmentation
+-- 9 Using CTE to Segmentation 
 WITH Customer_Spend AS 
     ( SELECT Customers.Customer_name, SUM(Orders.Quantity * Products.Price) as Total_Spend
         FROM Customers
@@ -74,3 +74,5 @@ WITH Customer_Spend AS
         ELSE 'Low spender' END AS Segmentation
         FROM Customer_spend
         ORDER BY Total_Spend DESC;
+
+-- end --
